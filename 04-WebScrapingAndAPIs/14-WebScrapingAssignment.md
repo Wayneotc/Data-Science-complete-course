@@ -1,1 +1,0 @@
-### Scraping Jobinja website, fetch last year jobs information and save into a CSV file.
