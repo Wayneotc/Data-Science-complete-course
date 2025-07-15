@@ -95,6 +95,64 @@ Understand how to create and manipulate figures and axes. This is especially use
    ```
 
 <img src="https://github.com/behnamyazdan/PythonForDataEngineeringCourse/blob/main/_assets/multiple_subplots_example.png">
+## Breaking Down the Code, Line by Line
+Let's look at each piece of the code and understand what it does.
+
+### 1. Creating the Frame and Canvases
+```python
+fig, axs = plt.subplots(2, 2)
+```
+`plt.subplots(2, 2)`: This is the core command. You're telling Matplotlib: "I want to create a grid of subplots with 2 rows and 2 columns."
+This function gives you back two things:
+`fig`: The main Figure object (the picture frame).
+`axs`: An array (like a Python list of lists) holding all the individual Axes objects (the 4 canvases).
+
+You can think of the `axs` array like this:
+```
+axs = [ [canvas_at_row_0_col_0,  canvas_at_row_0_col_1],
+        [canvas_at_row_1_col_0,  canvas_at_row_1_col_1] ]
+```
+So, to access the canvas in the top-left corner, you use `axs[0, 0]`. For the top-right, it's `axs[0, 1]`, and so on.
+
+### 2. Drawing on the First Canvas (Top-Left)
+```python
+# This is the canvas at row 0, column 0
+axs[0, 0].plot(x, y)
+axs[0, 0].set(xlabel='X-axis0 Label', ylabel='Y-axis0 Label', title='Basic Line Plot')
+```
+`axs[0, 0]`: First, you select the top-left canvas from your grid.
+`.plot(x, y)`: You use the `.plot()` method on that specific canvas to draw your line chart using your x and y data.
+`.set(...)`: This is a handy shortcut to set the labels and title for only that canvas. You're giving it an x-axis label, a y-axis label, and a title.
+
+### 3. Drawing on the Other Canvases
+The next three blocks of code do the exact same thing but for the other three canvases in your 2x2 grid.
+`axs[0, 1]`: Selects the top-right canvas.
+`axs[1, 0]`: Selects the bottom-left canvas.
+`axs[1, 1]`: Selects the bottom-right canvas.
+Each time, you plot the same (x, y) data and then set the unique labels and title for that specific plot.
+
+### 4. Customizing the Entire Figure
+```python
+fig.set_size_inches(15, 10)
+fig.suptitle('Multiple Subplots Example')
+```
+Notice here you are using `fig`, not `axs`. That's because you are now making changes to the entire picture frame, not the individual canvases.
+`fig.set_size_inches(15, 10)`: This makes the whole figure larger (15 inches wide by 10 inches tall), so your plots aren't squished together.
+`fig.suptitle(...)`: This adds a main title to the entire figure, which appears above all the individual subplot titles. "Suptitle" is short for "super title."
+
+### 5. Showing Your Masterpiece
+```python
+plt.show()
+```
+This is the final command that tells Matplotlib: "Okay, I'm done setting everything up. Now, display the final result on the screen."
+
+### Summary 
+
+1.  **Prepare Your Workspace**: Use `plt.subplots(rows, cols)` to create a figure (the frame) and a set of axes (the canvases).
+2.  **Create Each Plot**: Loop through your `axs` array. For each canvas, use `.plot()` to draw the data and `.set()` to add labels and a title.
+3.  **Final Touches**: Use the `fig` object to adjust the overall size (`fig.set_size_inches`) and add a main title (`fig.suptitle`). Finally, use `plt.show()` to display it.
+
+
 
 **3-Customizing Plots**
 
