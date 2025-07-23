@@ -382,7 +382,7 @@ The type of data plays a crucial role in choosing the right data visualization t
 **2. Numerical Data:**
 
 - This type of data represents quantities or measurements that can be counted or measured, like sales figures, temperature readings, or survey responses.
-- Examples: Sales revenue, product prices, customer satisfaction scores, temperature over time.
+- Examples: Sales revenue, product prices, customer satisfaction scores, temperature over time. 
 - Suitable visualizations: Line charts, scatter plots, histograms, boxplots, area charts.
 
 **3. Ordinal Data:**
